@@ -1,0 +1,54 @@
+{
+  "name": "webpack-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "eslint:install": "npm init @eslint/config@latest",
+    "src:init": "mkdir src && cd src && touch index.js style.css template.html",
+    "webpack:init": "touch webpack.common.js webpack.dev.js webpack.prod.js",
+    "dev": "webpack serve --open --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
+    "mkgh": "git branch gh-pages",
+    "gh:sync": "git checkout gh-pages && git merge main --no-edit",
+    "gh:add": "git add dist -f && git commit -m 'Deployment commit'",
+    "gh:deploy": "git subtree push --prefix dist origin gh-pages",
+    "lint": "npx eslint src/ --ext .js",
+    "lint:fix": "npm run lint -- --fix",
+    "prettier": "npx prettier . --write",
+    "test": "jest",
+    "test:watch": "jest --watch *.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DefalterXD/Webpack-Template.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/DefalterXD/Webpack-Template/issues"
+  },
+  "homepage": "https://github.com/DefalterXD/Webpack-Template#readme",
+  "devDependencies": {
+    "@babel/core": "^7.29.7",
+    "@babel/preset-env": "^7.29.7",
+    "@eslint/js": "^9.39.4",
+    "babel-jest": "^30.4.1",
+    "babel-loader": "^10.1.1",
+    "css-loader": "^7.1.4",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react": "^7.37.5",
+    "globals": "^17.5.0",
+    "html-loader": "^5.1.0",
+    "html-webpack-plugin": "^5.6.7",
+    "jest": "^30.4.2",
+    "prettier": "3.8.3",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.106.2",
+    "webpack-cli": "^7.0.2",
+    "webpack-dev-server": "^5.2.3",
+    "webpack-merge": "^6.0.1"
+  }
+}
