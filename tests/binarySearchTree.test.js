@@ -121,3 +121,18 @@ describe('Test inOrderForEach of the values in binary tree', () => {
         expect(log.values).toEqual([1, 3, 5, 7]);
     })
 });
+
+describe('Test postOrderForEach of the values in binary tree', () => {
+    const tree = new Tree(arrB);
+
+    const log = { values: [] };
+
+    const printEachTreeValue = (value) => {
+        log.values.push(value);
+    };
+
+    test('Return console.log with postOrder order', () => {
+        tree.postOrderForEach(printEachTreeValue);
+        expect(log.values).toEqual([1, 7, 5, 3]);
+    })
+});
