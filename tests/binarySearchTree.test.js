@@ -43,3 +43,34 @@ describe('Test insert value in binary tree', () => {
         expect(tree.insert(5)).toBe(undefined);
     });
 });
+
+describe('Test deletion of the value in binary tree', () => {
+    const tree1 = new Tree(arrB);
+    const tree2 = new Tree(arrB);
+    const tree3 = new Tree(arrA);
+    const tree4 = new Tree(arrD);
+
+    test('Delete the value 7 with no child nodes in binary tree', () => {
+        prettyPrint(tree1.root);
+        tree1.deleteItem(7);
+        prettyPrint(tree1.root);
+    });
+
+    test('Delete the value 5 with one child node in binary tree', () => {
+        prettyPrint(tree2.root);
+        tree2.deleteItem(5);
+        prettyPrint(tree2.root);
+    });
+
+    test('Delete the value 67 with one child node in binary tree', () => {
+        prettyPrint(tree3.root);
+        tree3.deleteItem(67);
+        prettyPrint(tree3.root);
+    });
+
+    test('Delete the value 15 with two child nodes in binary tree', () => {
+        prettyPrint(tree4.root);
+        tree4.deleteItem(12);
+        prettyPrint(tree4.root);
+    });
+});
