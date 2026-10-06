@@ -343,4 +343,26 @@ export class Tree {
 
         return height.value;
     }
+    // METHOD depth(value) return the number of the longest path from that node to root node
+    depth(value) {
+
+        let root = this.root;
+        let depth = 0;
+        while (root !== null) {
+            if (root.data === value) {
+                return depth;
+            } else if (root.data < value) {
+                root = root.right;
+                depth++;
+            } else if (root.data > value) {
+                root = root.left;
+                depth++;
+            }
+        }
+
+        if (depth === 0) {
+            return undefined;
+        }
+    }
+
 }
