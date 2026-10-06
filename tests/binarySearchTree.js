@@ -176,4 +176,14 @@ export class Tree {
                     return node.right;
                 }
 
+                const curr = this.#getSuccessor(node, value);
+                node.data = curr.data;
+                node.right = removeNode(node.right, node.data);
+            }
+
+            return node;
+        }
+
+        this.root = removeNode(this.root, value);
+    }
 }
