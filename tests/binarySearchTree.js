@@ -114,7 +114,6 @@ export class Tree {
         return root;
     }
 
-    // METHOD includes(value) which check for contained value and return boolean
     includes(value) {
         let curr = this.root;
         while (curr !== null) {
@@ -129,8 +128,7 @@ export class Tree {
 
         return false;
     }
-    
-    // METHOD insert(value) for inserting a new value into the tree
+
     insert(value) {
         let curr = this.root;
 
@@ -165,7 +163,6 @@ export class Tree {
         return curr;
     }
 
-    // METHOD deleteItem(value) to delete the value in tree
     deleteItem(value) {
         const removeNode = (node, value) => {
             if (node === null) {
@@ -259,7 +256,6 @@ export class Tree {
     }
 
 
-    // METHOD preOrderForEach(callback) 
     preOrderForEach(callback) {
 
         if (!callback && !(callback instanceof Function)) {
@@ -267,22 +263,16 @@ export class Tree {
         }
 
         const root = this.root;
-        // SET preOrder a function for recursion traverse
         const preOrder = (node) => {
-            // IF node is null then return
             if (node === null) return;
-            // INVOKE callback for the current node
             callback(node.data);
-            // INVOKE preOrder node to the left
             preOrder(node.left);
-            // INVOKE preOrder node to the right
             preOrder(node.right);
         }
 
         preOrder(root);
     }
 
-    // METHOD inOrderForEach(callback) for traversing callback
     inOrderForEach(callback) {
 
         if (!callback && !(callback instanceof Function)) {
@@ -290,22 +280,16 @@ export class Tree {
         }
 
         const root = this.root;
-        // SET preOrder a function for recursion traverse
         const inOrder = (node) => {
-            // IF node is null then return
             if (node === null) return;
-            // INVOKE preOrder node to the left
             inOrder(node.left);
-            // INVOKE callback for the current node
             callback(node.data);
-            // INVOKE preOrder node to the right
             inOrder(node.right);
         }
 
         inOrder(root);
     }
 
-    // METHOD postOrderForEach(callback) traverse the tree in depth-first level
     postOrderForEach(callback) {
 
         if (!callback && !(callback instanceof Function)) {
@@ -313,22 +297,16 @@ export class Tree {
         }
 
         const root = this.root;
-        // SET preOrder a function for recursion traverse
         const postOrder = (node) => {
-            // IF node is null then return
             if (node === null) return;
-            // INVOKE preOrder node to the left
             postOrder(node.left);
-            // INVOKE preOrder node to the right
             postOrder(node.right);
-            // INVOKE callback for the current node
             callback(node.data);
         }
 
         postOrder(root);
     }
 
-    // METHOD height(value) return the number of the longest path from that node to a leaf node
     height(value) {
         const height = { value: -1 };
         const root = this.root;
@@ -353,7 +331,7 @@ export class Tree {
 
         return height.value;
     }
-    // METHOD depth(value) return the number of the longest path from that node to root node
+    
     depth(value) {
 
         let root = this.root;
@@ -399,7 +377,7 @@ export class Tree {
 
         return getBalanceResult(root);
     }
-    // METHOD rebalance() to rebalance an unbalanced tree
+
     rebalance() {
         const root = this.root;
         const newTree = [];
