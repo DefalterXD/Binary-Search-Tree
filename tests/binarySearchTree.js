@@ -119,4 +119,31 @@ export class Tree {
 
         return false;
     }
+    
+    // METHOD insert(value) for inserting a new value into the tree
+    insert(value) {
+        let curr = this.root;
+
+        if (curr === null) {
+            return new Node(value);
+        }
+        while (curr !== null) {
+            if (curr.data === value) {
+                return;
+            } else if (curr.left === null && curr.right === null && curr.data !== null) {
+                break;
+            } else if (curr.data > value && curr.left !== null) {
+                curr = curr.left;
+            } else if (curr.data < value && curr.right !== null) {
+                curr = curr.right;
+            }
+        }
+
+        if (curr.data > value) {
+            curr.left = new Node(value);
+        } else if (curr.data < value) {
+            curr.right = new Node(value);
+        }
+    }
+
 }
