@@ -50,6 +50,16 @@ export class Tree {
         this.root = this.#buildTree(arr);
     }
 
+    unBalancedTree() {
+        const treeC = new Node(10);
+        treeC.left = new Node(20);
+        treeC.right = new Node(30);
+        treeC.left.left = new Node(40);
+        treeC.left.right = new Node(60);
+        treeC.left.right.right = new Node(80);
+
+        this.root = treeC;
+    }
 
     // PRIVATE METHOD sort() to sort an array
     #sort(arr) {
@@ -365,4 +375,47 @@ export class Tree {
         }
     }
 
+    #maxHeight(node) {
+        if (node === null) return 0;
+        return 1 + Math.max(this.#maxHeight(node.left), this.#maxHeight(node.right));
+    }
+
+    isBalanced() {
+        const root = this.root;
+
+        const getBalanceResult = (root) => {
+
+            if (root === null) return true;
+
+            const leftHeight = this.#maxHeight(root.left);
+            const rightHeight = this.#maxHeight(root.right);
+
+            const heightDiff = Math.abs(leftHeight - rightHeight);
+
+            if (heightDiff > 1) return false;
+
+            return getBalanceResult(root.left) && getBalanceResult(root.right);
+        }
+
+        return getBalanceResult(root);
+    }
+    // METHOD rebalance() to rebalance an unbalanced tree
+    rebalance() {
+        const root = this.root;
+        const newTree = [];
+
+        if (this.isBalanced()) return;
+
+        const preOrder = (node) => {
+            if (node === null) return;
+            newTree.push(node.data);
+            preOrder(node.left);
+            preOrder(node.right);
+        }
+
+        preOrder(root);
+
+        this.root = this.#buildTree(newTree);
+
+    }
 }
