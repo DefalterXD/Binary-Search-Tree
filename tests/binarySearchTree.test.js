@@ -155,3 +155,27 @@ describe('Test height of the given value', () => {
         expect(treeB.height(7)).toBe(0);
     });
 });
+
+describe('Test depth of the given value', () => {
+    const treeA = new Tree(arrA);
+    const treeB = new Tree(arrB);
+
+    test('Return depth of undefiend of the unkonwn value', () => {
+        expect(treeA.depth(7000)).toBe(undefined);
+    });
+    test('Return depth of 2 of the value 324', () => {
+        expect(treeA.depth(324)).toBe(2);
+    });
+
+    test('Return depth of undefiend of the unkonwn value', () => {
+        expect(treeB.depth(50)).toBe(undefined);
+    });
+
+    test('Return depth of 2 of the value 7', () => {
+        expect(treeB.depth(7)).toBe(2);
+    });
+
+    test('Return depth of 3 of the value 23', () => {
+        expect(treeA.depth(23)).toBe(3);
+    });
+});
