@@ -93,3 +93,17 @@ describe('Test levelOrderForEach of the values with callback', () => {
         expect(log.values).toEqual([8, 4, 67, 1, 5, 9, 324, 3, 7, 23, 6345]);
     });
 });
+
+describe('Test preOrder of the values in binary tree', () => {
+    const tree = new Tree(arrB);
+    const log = { values: [] };
+
+    const printEachTreeValue = (value) => {
+        log.values.push(value);
+    };
+
+    test('Return console.log with preOrder order', () => {
+        tree.preOrderForEach(printEachTreeValue);
+        expect(log.values).toEqual([3, 1, 5, 7]);
+    })
+});
