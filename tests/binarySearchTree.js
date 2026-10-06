@@ -104,4 +104,19 @@ export class Tree {
         return root;
     }
 
+    // METHOD includes(value) which check for contained value and return boolean
+    includes(value) {
+        let curr = this.root;
+        while (curr !== null) {
+            if (curr.data === value) {
+                return true;
+            } else if (curr.data > value) {
+                curr = curr.left;
+            } else if (curr.data < value) {
+                curr = curr.right;
+            }
+        }
+
+        return false;
+    }
 }
