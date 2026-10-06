@@ -74,3 +74,22 @@ describe('Test deletion of the value in binary tree', () => {
         prettyPrint(tree4.root);
     });
 });
+
+describe('Test levelOrderForEach of the values with callback', () => {
+    const tree = new Tree(arrA);
+    const log = { values: [] };
+
+    const printEachTreeValue = (value) => {
+        log.values.push(value);
+    };
+
+    test('Return undefined to trigger throw Error', () => {
+        expect(() => tree.levelOrderForEach(undefined)).toThrow('Please provide a callback!');
+    });
+
+    test('Return console.log for loging each value', () => {
+        tree.levelOrderForEach(printEachTreeValue);
+        console.log(log.values);
+        expect(log.values).toEqual([8, 4, 67, 1, 5, 9, 324, 3, 7, 23, 6345]);
+    });
+});
