@@ -186,4 +186,67 @@ export class Tree {
 
         this.root = removeNode(this.root, value);
     }
+    // METHOD levelOrderForEach(callback) traverse the tree in breadth-first level
+    // passing into callback values from nodes (not nodes themselves)
+    // throw an Error that callback is required 
+    // Iteration
+    // levelOrderForEach(callback) {
+    //     if (!callback && !(callback instanceof Function)) {
+    //         throw new Error('Please provide a callback!');
+    //     }
+
+    //     const root = this.root;
+
+    //     if (!root) {
+    //         return;
+    //     }
+
+    //     const q = new Queue();
+    //     q.enqueue(root);
+
+    //     while (!q.isEmpty()) {
+
+    //         let curr = q.dequeue(); 
+    //         if (curr.left !== null) {
+    //             q.enqueue(curr.left);
+    //         }
+    //         if (curr.right !== null) {
+    //             q.enqueue(curr.right);
+    //         }
+    //         callback(curr.data);
+    //     }
+
+    // }
+
+    // Recursion
+    levelOrderForEach(callback) {
+        if (!callback && !(callback instanceof Function)) {
+            throw new Error('Please provide a callback!');
+        }
+
+        const root = this.root;
+        const q = new Queue();
+        q.enqueue(root);
+
+        const levelOrder = (queue) => {
+            if (queue.isEmpty()) {
+                return;
+            }
+
+            let curr = queue.dequeue();
+            callback(curr.data);
+
+            if (curr.left !== null) {
+                queue.enqueue(curr.left);
+            }
+            if (curr.right !== null) {
+                queue.enqueue(curr.right);
+            }
+            levelOrder(queue);
+        }
+
+        levelOrder(q);
+    }
+
+
 }
