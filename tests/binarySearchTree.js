@@ -295,4 +295,27 @@ export class Tree {
         inOrder(root);
     }
 
+    // METHOD postOrderForEach(callback) traverse the tree in depth-first level
+    postOrderForEach(callback) {
+
+        if (!callback && !(callback instanceof Function)) {
+            throw new Error('Please provide a callback!');
+        }
+
+        const root = this.root;
+        // SET preOrder a function for recursion traverse
+        const postOrder = (node) => {
+            // IF node is null then return
+            if (node === null) return;
+            // INVOKE preOrder node to the left
+            postOrder(node.left);
+            // INVOKE preOrder node to the right
+            postOrder(node.right);
+            // INVOKE callback for the current node
+            callback(node.data);
+        }
+
+        postOrder(root);
+    }
+
 }
