@@ -318,4 +318,29 @@ export class Tree {
         postOrder(root);
     }
 
+    // METHOD height(value) return the number of the longest path from that node to a leaf node
+    height(value) {
+        const height = { value: -1 };
+        const root = this.root;
+        const getHeight = (root, height, value) => {
+            if (!root) return -1;
+
+            const leftHeight = getHeight(root.left, height, value);
+            const rightHeight = getHeight(root.right, height, value);
+
+            const ans = Math.max(leftHeight, rightHeight) + 1;
+
+            if (root.data === value) height.value = ans;
+
+            return ans;
+        }
+
+        getHeight(root, height, value);
+
+        if (height.value === -1) {
+            return undefined;
+        }
+
+        return height.value;
+    }
 }
