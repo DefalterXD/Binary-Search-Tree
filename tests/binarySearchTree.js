@@ -28,3 +28,18 @@ class Queue {
 
 }
 
+class Node {
+    constructor(data = null) {
+        this.data = data;
+        this.left = null;
+        this.right = null;
+    }
+}
+
+class Data {
+    constructor(node, start, end) {
+        this.node = node;
+        this.start = start;
+        this.end = end;
+    }
+}
