@@ -179,3 +179,29 @@ describe('Test depth of the given value', () => {
         expect(treeA.depth(23)).toBe(3);
     });
 });
+
+describe('Test isBalanced of the tree and rebalance it', () => {
+    const treeA = new Tree(arrA);
+    const treeB = new Tree(arrB);
+
+    const treeC = new Tree(arrD);
+    treeC.insert(120);
+    treeC.insert(200);
+
+    test('Return true of the given binary A tree', () => {
+        expect(treeA.isBalanced()).toBe(true);
+    });
+
+    test('Return true of the given binary B tree', () => {
+        expect(treeB.isBalanced()).toBe(true);
+    });
+
+    test('Return false of the given binary C tree', () => {
+        expect(treeC.isBalanced()).toBe(false);
+    });
+
+    test('Return new array from unbalanced tree', () => {
+        treeC.rebalance();
+        expect(treeC.isBalanced()).toBe(true);
+    });
+});
