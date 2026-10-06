@@ -136,3 +136,22 @@ describe('Test postOrderForEach of the values in binary tree', () => {
         expect(log.values).toEqual([1, 7, 5, 3]);
     })
 });
+
+describe('Test height of the given value', () => {
+    const treeA = new Tree(arrA);
+    const treeB = new Tree(arrB);
+
+    test('Return height of undefiend of the unkonwn value', () => {
+        expect(treeA.height(7000)).toBe(undefined);
+    });
+    test('Return height of 1 of the value 324', () => {
+        expect(treeA.height(324)).toBe(1);
+    });
+
+    test('Return height of undefiend of the unkonwn value', () => {
+        expect(treeB.height(50)).toBe(undefined);
+    });
+    test('Return height of 2 of the value 5', () => {
+        expect(treeB.height(7)).toBe(0);
+    });
+});
