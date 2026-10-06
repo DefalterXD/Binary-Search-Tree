@@ -146,4 +146,34 @@ export class Tree {
         }
     }
 
+    #getSuccessor(curr) {
+        curr = curr.right;
+        while (curr !== null && curr.left !== null) {
+            curr = curr.left;
+        }
+
+        return curr;
+    }
+
+    // METHOD deleteItem(value) to delete the value in tree
+    deleteItem(value) {
+        const removeNode = (node, value) => {
+            if (node === null) {
+                return null;
+            }
+
+            if (node.data > value) {
+                node.left = removeNode(node.left, value);
+            } else if (node.data < value) {
+                node.right = removeNode(node.right, value);
+            } else {
+
+                if (node.right === null) {
+                    return node.left;
+                }
+
+                if (node.left === null) {
+                    return node.right;
+                }
+
 }
