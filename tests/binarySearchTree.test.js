@@ -25,3 +25,21 @@ describe('Test finding value in binary tree', () => {
         expect(tree.includes(10)).toBe(false);
     });
 });
+
+describe('Test insert value in binary tree', () => {
+    const tree = new Tree(arrB);
+
+    test('Insert number 2 into the tree', () => {
+        tree.insert(2);
+        expect(tree.root.left.right.data).toBe(2);
+    });
+
+    test('Insert number 6 into the tree', () => {
+        tree.insert(6);
+        expect(tree.root.right.right.left.data).toBe(6);
+    });
+
+    test('Insert number 5 into the tree to with nothing inserted', () => {
+        expect(tree.insert(5)).toBe(undefined);
+    });
+});
